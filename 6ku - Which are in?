@@ -20,13 +20,10 @@ In Shell bash a1 and a2 are strings. The return is a string where words are sepa
 Beware: r must be without duplicates.
 Don't mutate the inputs.
 
-function inArray(array1,array2){
-    let newArray = []
-    array2.map(t=>{
-        if (t.includes(array1[0])) newArray.push(array1[0])
-        if (t.includes(array1[1])) newArray.push(array1[1]);
-        if (t.includes(array1[2])) newArray.push(array1[2]);
-    })
-
-    return newArray.filter((v, i, a) => a.indexOf(v) === i).sort()
+function inArray(arr1, arr2) {
+  return arr1.filter(function(needle) {
+    return arr2.some(function(haystack) {
+      return haystack.indexOf(needle) > -1;
+    });
+  }).sort();
 }
